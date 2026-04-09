@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-sin-fondo.png">
 </head>
 <body>
     <h1>Acme</h1>
@@ -17,10 +18,15 @@
         </select>
 
         <label for="Document">Documento</label>
-        <input type="text" id="cedula" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+" title="Solo números y puntos" minlength="6" maxlength="12"  required>
+        <input type="number" id="cedula" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+"  title="Solo números y puntos" minlength="6" maxlength="12"  required>
+
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
 
         <label for="Password">Contraseña</label>
         <input type="password" id="Contraseña" required placeholder="Ingrese su contraseña">
+
+        <a href="contra_olvidada.html">¿Olvidaste tu contraseña?</a>
     </form>
 
     
