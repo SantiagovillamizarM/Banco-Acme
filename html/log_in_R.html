@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+</head>
+<body>
+    <h1>Acme</h1>
+    <form>
+        <label for="tipoDoc">Tipo de identificación</label>
+
+        <select id="tipoDoc" name="tipoDoc" required>
+            <option value="">Seleccione una opción</option>
+            <option value="CC">Cédula de ciudadanía</option>
+            <option value="TI">Tarjeta de identidad</option>
+        </select>
+
+        <label for="Document">Documento</label>
+        <input type="text" id="cedula" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+" title="Solo números y puntos" minlength="6" maxlength="12"  required>
+
+        <label for="Password">Contraseña</label>
+        <input type="password" id="Contraseña" required placeholder="Ingrese su contraseña">
+    </form>
+
+    
+</body>
+</html>
