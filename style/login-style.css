@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #080810;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+
+    background-image:
+        radial-gradient(ellipse 500px 400px at 15% 60%, rgba(90, 30, 160, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 80% 20%, rgba(110, 40, 200, 0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 300px 250px at 70% 75%, rgba(60, 10, 120, 0.4) 0%, transparent 60%);
+}
+
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    width: 900px;
+    height: 180px;
+    border: 1.5px solid rgba(160, 80, 255, 0.25);
+    top: 35%;
+    left: -15%;
+    transform: rotate(-18deg);
+    filter: blur(2px);
+}
+
+body::after {
+    width: 700px;
+    height: 140px;
+    border: 1.5px solid rgba(160, 80, 255, 0.18);
+    top: 42%;
+    right: -10%;
+    transform: rotate(12deg);
+    filter: blur(2px);
+}
+
+
+#todo-login {
+    background-color: #1c1b2e;
+    border: 1.5px solid rgba(140, 80, 255, 0.45);
+    border-radius: 24px;
+    padding: 64px 72px 72px 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    z-index: 1;
+}
+
+
+#titulo-login {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+
+#botones-login {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+
+#a1-login,
+#a2-login {
+    text-decoration: none;
+    width: 100%;
+}
+
+
+#boton-login,
+#boton-register\/login {
+    width: 100%;
+    padding: 20px 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+#boton-login {
+    background: linear-gradient(90deg, #5b21b6 0%, #8b5cf6 100%);
+    color: #ffffff;
+}
+
+#boton-login:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+#boton-register\/login {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+#boton-register\/login:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
+}
+
+
+@media (max-width: 600px) {
+    #todo-login {
+        padding: 48px 32px 56px 32px;
+        border-radius: 18px;
+        max-width: 90vw;
+    }
+
+    #titulo-login {
+        font-size: 3.2rem;
+    }
+}

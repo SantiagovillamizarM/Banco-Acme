@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #07060f;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    background-image:
+        radial-gradient(ellipse 480px 480px at 50% 38%, rgba(100, 30, 200, 0.75) 0%, transparent 65%),
+        radial-gradient(ellipse 350px 200px at 80% 80%, rgba(60, 15, 130, 0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 250px 180px at 10% 70%, rgba(50, 10, 100, 0.4) 0%, transparent 60%);
+}
+
+
+body::after {
+    content: '';
+    position: fixed;
+    width: 110vw;
+    height: 260px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(70, 20, 160, 0.55) 0%, transparent 100%);
+    bottom: -80px;
+    right: -10vw;
+    transform: rotate(-6deg);
+    pointer-events: none;
+}
+
+
+body::before {
+    content: '';
+    position: fixed;
+    width: 140px;
+    height: 130px;
+    background-color: rgba(80, 60, 120, 0.3);
+    border-radius: 18px;
+    top: 7%;
+    right: 10%;
+    pointer-events: none;
+}
+
+
+#todo-loginR {
+    background-color: #1a1927;
+    border: 1.5px solid rgba(120, 70, 220, 0.5);
+    border-radius: 22px;
+    padding: 56px 64px 52px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+
+#titulo-loginR {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+
+#form-loginR {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+
+#label-loginR,
+#documento-loginR,
+#correo-text-loginR,
+#password-loginR {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 10px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+
+
+#seleccion-loginR,
+#cedula-loginR,
+#correo-loginR,
+#contraseña-loginR {
+    width: 100%;
+    padding: 16px 20px;
+    background-color: #252436;
+    border: 1.5px solid rgba(120, 80, 200, 0.45);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.97rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#seleccion-loginR:focus,
+#cedula-loginR:focus,
+#correo-loginR:focus,
+#contraseña-loginR:focus {
+    border-color: rgba(160, 100, 255, 0.85);
+    background-color: #2c2b42;
+}
+
+
+#cedula-loginR::placeholder,
+#correo-loginR::placeholder,
+#contraseña-loginR::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+
+#seleccion-loginR {
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    cursor: pointer;
+}
+
+
+#seleccion-loginR option {
+    background-color: #1a1927;
+    color: #ffffff;
+}
+
+
+#documento-loginR,
+#correo-text-loginR {
+    display: none;
+}
+
+
+#boton-submit-loginR {
+    width: 100%;
+    padding: 16px 0;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #5b21b6 0%, #8b5cf6 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+#boton-submit-loginR:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+#boton-submit-loginR:active {
+    transform: translateY(0);
+}
+
+
+#hipervinculo-loginR {
+    color: rgba(160, 120, 255, 0.85);
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: right;
+    margin-top: 6px;
+    transition: color 0.2s ease;
+}
+
+#hipervinculo-loginR:hover {
+    color: #c084fc;
+}
+
+
+#cedula-loginR::-webkit-outer-spin-button,
+#cedula-loginR::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+@media (max-width: 560px) {
+    #todo-loginR {
+        padding: 44px 28px 44px 28px;
+        border-radius: 16px;
+        max-width: 92vw;
+    }
+
+    #titulo-loginR {
+        font-size: 3rem;
+    }
+}

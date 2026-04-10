@@ -5,29 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
     <link rel="icon" type="image/png" href="../assets/favicon-sin-fondo.png">
+    <link rel="stylesheet" href="../style/loginR-style.css">
 </head>
 <body>
-    <h1>Acme</h1>
-    <form>
-        <label for="tipoDoc">Tipo de identificación</label>
+    <div id="todo-loginR">
+        <h1 id="titulo-loginR">Acme</h1>
+        <form id="form-loginR">
+            <label for="tipoDoc" id="label-loginR">Tipo de identificación</label>
 
-        <select id="tipoDoc" name="tipoDoc" required>
-            <option value="">Seleccione una opción</option>
-            <option value="CC">Cédula de ciudadanía</option>
-            <option value="TI">Tarjeta de identidad</option>
-        </select>
+            <select id="seleccion-loginR" name="tipoDoc" required>
+                <option value="" id="valor1-loginR">Seleccione una opción</option>
+                <option value="CC" id="valor2-loginR">Cédula de ciudadanía</option>
+                <option value="TI" id="valor3-loginR">Tarjeta de identidad</option>
+            </select>
 
-        <label for="Document">Documento</label>
-        <input type="number" id="cedula" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+"  title="Solo números y puntos" minlength="6" maxlength="12"  required>
+            <label for="Document" id="documento-loginR">Documento</label>
+            <input type="number" id="cedula-loginR" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+"  title="Solo números y puntos" minlength="6" maxlength="12"  required>
 
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+            <label for="correo" id="correo-text-loginR">Correo electrónico</label>
+            <input type="email" id="correo-loginR" name="correo" placeholder="ejemplo@correo.com" required>
 
-        <label for="Password">Contraseña</label>
-        <input type="password" id="Contraseña" required placeholder="Ingrese su contraseña">
+            <label for="Password" id="password-loginR">Contraseña</label>
+            <input type="password" id="contraseña-loginR" required placeholder="Ingrese su contraseña">
 
-        <a href="contra_olvidada.html">¿Olvidaste tu contraseña?</a>
-    </form>
+           
+            <button type="submit" id="boton-submit-loginR">Iniciar sesión</button>
+               
+            <a href="contra_olvidada.html" id="hipervinculo-loginR">¿Olvidaste tu contraseña?</a>
+        </form>
+    </div>
 
     
 </body>
