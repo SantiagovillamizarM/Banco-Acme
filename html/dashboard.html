@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Acme</title>
+    <link rel="icon" type="image/png" href="../assets/favicon-sin-fondo.png">
+    <link rel="stylesheet" href="../style/dashboard.css">
+</head>
+
+<body>
+    <div id="fondo-dashboard">
+    <div id="dashboard">
+
+        <div id="panel-izquierdo">
+            <h1 id="titulo-dashboard">Acme</h1>
+
+            <nav id="nav-dashboard">
+                <button class="boton-menu" id="btn-resumen">
+                    <span class="icono-menu">▦</span>
+                    Resumen de transacciones
+                </button>
+                <button class="boton-menu" id="btn-consignar">
+                    <span class="icono-menu">◎</span>
+                    Consignación electrónica
+                </button>
+                <button class="boton-menu" id="btn-retirar">
+                    <span class="icono-menu">▣</span>
+                    Retiro de dinero
+                </button>
+                <button class="boton-menu" id="btn-servicios">
+                    <span class="icono-menu">☁</span>
+                    Pago de servicios públicos
+                </button>
+                <button class="boton-menu" id="btn-certificado">
+                    <span class="icono-menu">❑</span>
+                    Certificado bancario
+                </button>
+            </nav>
+
+            <div id="zona-cerrar-sesion">
+                <a href="" id="a-cerrar-sesion">
+                    <button class="boton-menu" id="btn-cerrar-sesion">
+                        <span class="icono-menu">⇥</span>
+                        Cerrar sesión
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div id="panel-derecho">
+
+
+            <div class="seccion" id="resumenCuenta">
+                <div id="tarjeta-resumen">
+                    <div id="fila-numero-cuenta">
+                        <p class="label-resumen">Número de cuenta</p>
+                        <p class="valor-resumen" id="valor-numero-cuenta">—</p>
+                    </div>
+                    <div id="fila-datos-resumen">
+                        <div class="columna-resumen">
+                            <p class="label-resumen">Saldo actual</p>
+                            <p class="valor-resumen" id="valor-saldo">—</p>
+                        </div>
+                        <div class="columna-resumen">
+                            <p class="label-resumen">Estado</p>
+                            <p class="valor-resumen" id="valor-estado">—</p>
+                        </div>
+                        <div class="columna-resumen">
+                            <p class="label-resumen">Fecha de creación</p>
+                            <p class="valor-resumen" id="valor-fecha-creacion">—</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tarjeta-transacciones-resumen">
+                    <div id="barra-skeleton"></div>
+                    <div id="bloque-skeleton">
+                        <div class="linea-skeleton" id="linea-sk-1"></div>
+                        <div class="linea-skeleton" id="linea-sk-2"></div>
+                        <div class="linea-skeleton" id="linea-sk-3"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="seccion" id="transacciones">
+                <h2 class="titulo-seccion">Últimas Transacciones</h2>
+                <div id="contenedor-tabla">
+                    <table id="tabla-transacciones">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Referencia</th>
+                                <th>Tipo</th>
+                                <th>Descripción</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-transacciones"></tbody>
+                    </table>
+                </div>
+                <button class="boton-accion" id="btn-imprimir-transacciones">Imprimir</button>
+            </div>
+
+
+            <div class="seccion" id="consignar">
+                <h2 class="titulo-seccion">Consignación electrónica</h2>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Número de cuenta</p>
+                    <p class="valor-dato" id="valor-cuenta-consignar">—</p>
+                </div>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Nombre</p>
+                    <p class="valor-dato" id="valor-nombre-consignar">—</p>
+                </div>
+                <label class="label-campo" for="monto-consignar">Monto</label>
+                <input class="campo-input" type="number" id="monto-consignar" placeholder="Ej: 50000" min="0">
+                <button class="boton-accion" id="btn-hacer-consignar">Consignar</button>
+            </div>
+
+            <div class="seccion" id="retirar">
+                <h2 class="titulo-seccion">Retiro de dinero</h2>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Número de cuenta</p>
+                    <p class="valor-dato" id="valor-cuenta-retirar">—</p>
+                </div>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Nombre</p>
+                    <p class="valor-dato" id="valor-nombre-retirar">—</p>
+                </div>
+                <label class="label-campo" for="monto-retirar">Monto</label>
+                <input class="campo-input" type="number" id="monto-retirar" placeholder="Ej: 20000" min="0">
+                <button class="boton-accion" id="btn-hacer-retirar">Retirar</button>
+            </div>
+
+
+            <div class="seccion" id="servicio">
+                <h2 class="titulo-seccion">Pago de servicios públicos</h2>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Número de cuenta</p>
+                    <p class="valor-dato" id="valor-cuenta-servicio">—</p>
+                </div>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Nombre</p>
+                    <p class="valor-dato" id="valor-nombre-servicio">—</p>
+                </div>
+                <label class="label-campo" for="tipo-servicio">Servicio</label>
+                <select class="campo-select" id="tipo-servicio">
+                    <option value="">Seleccione un servicio</option>
+                    <option value="energia">Energía</option>
+                    <option value="agua">Agua</option>
+                    <option value="gas">Gas</option>
+                    <option value="internet">Internet</option>
+                </select>
+                <label class="label-campo" for="referencia-servicio">Referencia</label>
+                <input class="campo-input" type="text" id="referencia-servicio" placeholder="Número de referencia">
+                <label class="label-campo" for="valor-servicio">Valor</label>
+                <input class="campo-input" type="number" id="valor-servicio" placeholder="Ej: 80000" min="0">
+                <button class="boton-accion" id="btn-pagar-servicio">Pagar</button>
+            </div>
+
+
+            <div class="seccion" id="certificado">
+                <h2 class="titulo-seccion">Certificado Bancario</h2>
+                <p class="texto-seccion">Este usuario tiene una cuenta activa en Banco Acme.</p>
+                <div class="tarjeta-dato">
+                    <p class="label-dato">Fecha de creación</p>
+                    <p class="valor-dato" id="valor-fecha-certificado">—</p>
+                </div>
+                <button class="boton-accion" id="btn-imprimir-certificado">Imprimir</button>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</body>
+</html>

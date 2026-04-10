@@ -8,7 +8,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0a0818;
+    background-color: #000000;
     color: #ffffff;
     min-height: 100vh;
 }
@@ -16,11 +16,11 @@ body {
 
 #todo-index {
     min-height: 100vh;
-    background-color: #0a0818;
+    background-color: #000000;
     background-image:
-        radial-gradient(ellipse 700px 600px at 100% 0%, rgba(100, 40, 200, 0.55) 0%, transparent 65%),
-        radial-gradient(ellipse 400px 400px at 95% 5%, rgba(140, 60, 255, 0.35) 0%, transparent 55%),
-        radial-gradient(ellipse 250px 250px at 90% 2%, rgba(80, 20, 160, 0.8) 0%, transparent 50%);
+        radial-gradient(ellipse 700px 600px at 100% 0%, rgba(255, 255, 255, 0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 400px 400px at 95% 5%, rgba(0, 0, 0, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 250px 250px at 90% 2%, rgba(0, 0, 0, 0.514) 0%, transparent 50%);
     padding: 72px 88px 88px 88px;
     position: relative;
 }
@@ -44,7 +44,7 @@ body {
 #nombre-index {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #8b5cf6;
+    color: #ffffff;
     letter-spacing: 0.01em;
     margin-bottom: 0;
 }
@@ -65,7 +65,7 @@ body {
 }
 
 #boton-index {
-    background-color: #e53e3e;
+    background-color: #000000;
     color: #ffffff;
     border: none;
     padding: 22px 52px;
@@ -76,12 +76,12 @@ body {
     cursor: pointer;
     letter-spacing: 0.02em;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 4px 32px rgba(229, 62, 62, 0.4);
+    box-shadow: 0 4px 32px rgba(255, 255, 255, 0.4);
     white-space: nowrap;
 }
 
 #boton-index:hover {
-    background-color: #c53030;
+    background-color: #161616;
     transform: translateY(-1px);
 }
 
@@ -106,7 +106,7 @@ body {
 
 
 .tarjeta {
-    background-color: #151428;
+    background-color: #000000;
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 16px;
     padding: 28px 24px;

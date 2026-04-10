@@ -18,9 +18,9 @@ body {
 
 
     background-image:
-        radial-gradient(ellipse 500px 400px at 15% 60%, rgba(90, 30, 160, 0.7) 0%, transparent 70%),
-        radial-gradient(ellipse 400px 300px at 80% 20%, rgba(110, 40, 200, 0.5) 0%, transparent 65%),
-        radial-gradient(ellipse 300px 250px at 70% 75%, rgba(60, 10, 120, 0.4) 0%, transparent 60%);
+        radial-gradient(ellipse 500px 400px at 15% 60%, rgba(255, 255, 255, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 80% 20%, rgba(255, 255, 255, 0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 300px 250px at 70% 75%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
 }
 
 
@@ -35,7 +35,7 @@ body::after {
 body::before {
     width: 900px;
     height: 180px;
-    border: 1.5px solid rgba(160, 80, 255, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     top: 35%;
     left: -15%;
     transform: rotate(-18deg);
@@ -45,7 +45,7 @@ body::before {
 body::after {
     width: 700px;
     height: 140px;
-    border: 1.5px solid rgba(160, 80, 255, 0.18);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
     top: 42%;
     right: -10%;
     transform: rotate(12deg);
@@ -54,8 +54,8 @@ body::after {
 
 
 #todo-login {
-    background-color: #1c1b2e;
-    border: 1.5px solid rgba(140, 80, 255, 0.45);
+    background-color: #000000;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
     border-radius: 24px;
     padding: 64px 72px 72px 72px;
     display: flex;
@@ -108,7 +108,7 @@ body::after {
 }
 
 #boton-login {
-    background: linear-gradient(90deg, #5b21b6 0%, #8b5cf6 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #000000 100%);
     color: #ffffff;
 }
 
