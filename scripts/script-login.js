@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+  // Si ya esta logueado, va directo al dashboard
+  if (sessionStorage.getItem("usuarioLogueado")) {
+    window.location.href = "dashboard.html";
+    return;
+  }
+
   const formulario = document.getElementById("form-loginR");
   const mensajeError = document.getElementById("mensaje-error-loginR");
 
@@ -19,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const usuariosJson = datos.usuarios;
 
-        
+        // Busca en el JSON (el admin)
         const adminEncontrado = usuariosJson.find(function (usuario) {
           return (
             usuario.tipoDoc === tipoDocSeleccionado &&
@@ -29,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
           );
         });
 
-        
+        // Busca en localStorage (usuarios registrados)
         const usuariosLocales = JSON.parse(localStorage.getItem("usuarios")) || [];
         const usuarioLocalEncontrado = usuariosLocales.find(function (usuario) {
           return (
