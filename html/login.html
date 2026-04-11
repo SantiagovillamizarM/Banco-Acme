@@ -5,21 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
     <link rel="icon" type="image/png" href="../assets/favicon-sin-fondo.png">
-    <link rel="stylesheet" href="../style/login-style.css">
+    <link rel="stylesheet" href="../style/loginR-style.css">
+    <script src="../scripts/script-login.js" defer></script>
 </head>
 <body>
-    <div id="todo-login">
-        <h1 id="titulo-login">Acme</h1>
+    <div id="todo-loginR">
+        <h1 id="titulo-loginR">Acme</h1>
+        <form id="form-loginR">
+            <label for="tipoDoc" id="label-loginR">Tipo de identificación</label>
 
-        <div id="botones-login">
-            <a href="log_in_R.html" id="a1-login">
-            <button id="boton-login">Log in</button>
-            </a>
+            <select id="seleccion-loginR" name="tipoDoc" required>
+                <option value="" id="valor1-loginR">Seleccione una opción</option>
+                <option value="CC" id="valor2-loginR">Cédula de ciudadanía</option>
+                <option value="TI" id="valor3-loginR">Tarjeta de identidad</option>
+            </select>
 
-            <a href="Register/Register_fase1.html" id="a2-login">
-            <button id="boton-register/login">Register</button>
-            </a>
-        </div>
+            <label for="Document" id="documento-loginR">Documento</label>
+            <input type="number" id="cedula-loginR" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+"  title="Solo números y puntos" minlength="6" maxlength="12"  required>
+
+            <label for="correo" id="correo-text-loginR">Correo electrónico</label>
+            <input type="email" id="correo-loginR" name="correo" placeholder="ejemplo@correo.com" required>
+
+            <label for="Password" id="password-loginR">Contraseña</label>
+            <input type="password" id="contraseña-loginR" required placeholder="Ingrese su contraseña">
+
+           
+            <button type="submit" id="boton-submit-loginR">Iniciar sesión</button>
+
+            <p id="mensaje-error-loginR"></p>
+               
+            <a href="contra_olvidada.html" id="hipervinculo-loginR">¿Olvidaste tu contraseña?</a>
+        </form>
     </div>
+
+    
 </body>
 </html>

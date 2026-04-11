@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Registro - Fase 3</title>
+    <link rel="icon" type="image/png" href="../../assets/favicon-sin-fondo.png">
+    <link rel="stylesheet" href="../../style/registro-fase3-style.css">
+    <script src="../../scripts/registro-fase3.js" defer></script>
 </head>
 <body>
-    
+    <div id="todo-fase3">
+        <h1 id="titulo-fase3">Acme</h1>
+
+        <div id="subtitulos-fase3">
+            <p id="registro-texto-fase3">Registro</p>
+            <p id="contacto-texto-fase3">Datos de contacto</p>
+        </div>
+
+        <form id="form-fase3">
+
+            <label for="correo-fase3" id="label-correo-fase3">Correo electrónico</label>
+            <input type="email" id="correo-fase3" name="correo" placeholder="Ej: juan@correo.com" required>
+
+            <label for="telefono-fase3" id="label-telefono-fase3">Teléfono</label>
+            <input type="tel" id="telefono-fase3" name="telefono" placeholder="Ej: 3001234567" maxlength="10" required>
+
+            <label for="direccion-fase3" id="label-direccion-fase3">Dirección de residencia</label>
+            <input type="text" id="direccion-fase3" name="direccion" placeholder="Ej: Calle 123 # 45-67" required>
+
+            <label for="ciudad-fase3" id="label-ciudad-fase3">Ciudad</label>
+            <input type="text" id="ciudad-fase3" name="ciudad" placeholder="Ej: Bogotá" required>
+
+            <button type="submit" id="boton-crear-fase3">Crear cuenta</button>
+
+        </form>
+    </div>
 </body>
 </html>

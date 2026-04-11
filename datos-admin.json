@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    {
+      "tipoDoc": "CC",
+      "cedula": "123456789",
+      "primerNombre": "Admin",
+      "segundoNombre": "",
+      "genero": "masculino",
+      "correo": "admin@acme.com",
+      "contrasena": "12345678910",
+      "direccion": "Calle 123 # 45-67",
+      "ciudad": "Bogotá",
+      "telefono": "3001234567"
+    }
+  ]
+}
