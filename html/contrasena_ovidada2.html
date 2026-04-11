@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar contraseña</title>
+    <title>Nueva contraseña</title>
     <link rel="icon" type="image/png" href="../assets/favicon-sin-fondo.png">
     <link rel="stylesheet" href="../style/loginR-style.css">
-    <script src="../scripts/contra_olvidada.js" defer></script>
+    <script src="../scripts/contrasena_olvidada2.js" defer></script>
 </head>
 <body>
     <div id="todo-loginR">
         <h1 id="titulo-loginR">Acme</h1>
 
-        <form id="form-recuperar">
-            <label>Documento</label>
-            <input type="number" id="cedula-recuperar" placeholder="Ej: 1234567" required>
+        <form id="form-nueva-contrasena">
+            <label>Contraseña nueva</label>
+            <input type="password" id="contrasena-nueva" placeholder="Mínimo 6 caracteres" required>
 
-            <label>Correo electrónico</label>
-            <input type="email" id="correo-recuperar" placeholder="ejemplo@correo.com" required>
+            <label>Confirmar contraseña</label>
+            <input type="password" id="contrasena-confirmar" placeholder="Repite tu contraseña" required>
 
-            <button type="submit" id="boton-submit-loginR">Continuar</button>
+            <button type="submit" id="boton-submit-loginR">Guardar contraseña</button>
 
             <p id="mensaje-error-loginR"></p>
 
