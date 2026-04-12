@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Verificar que no exista ya ese usuario en localStorage
+
     const usuariosLocales = JSON.parse(localStorage.getItem("usuarios")) || [];
     const yaExiste = usuariosLocales.find(function (usuario) {
       return usuario.cedula === cedula && usuario.tipoDoc === tipoDoc;

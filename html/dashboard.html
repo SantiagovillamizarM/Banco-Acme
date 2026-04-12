@@ -1,13 +1,23 @@
+<!--Lo necesario para que el HTML funcione-->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco Acme</title>
+
+    <!--Link necesario para que aparezca el favicon (detalles de fina coqueteria)-->
+    <!--el favicon se encuentra en la carpeta "assets"-->
     <link rel="icon" type="image/png" href="../assets/favicon-sin-fondo.png">
+
+    <!--Link para conectar el CSS con el HTML (Los CSS tienen los nombres de los html + style + el .css)-->
     <link rel="stylesheet" href="../style/dashboard.css">
+
+    <!--Link entre el HTML y el JS junto con el defer(descarga el archivo JavaScript mientras arma la página, pero solo lo ejecuta cuando la página ya está lista)-->
     <script src="../scripts/dashboard.js" defer></script>
 </head>
+
 
 <body>
     <div id="fondo-dashboard">
@@ -51,7 +61,7 @@
 
         <div id="panel-derecho">
 
-
+            
             <div class="seccion" id="resumenCuenta">
                 <div id="tarjeta-resumen">
                     <div id="fila-numero-cuenta">
@@ -73,17 +83,9 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="tarjeta-transacciones-resumen">
-                    <div id="barra-skeleton"></div>
-                    <div id="bloque-skeleton">
-                        <div class="linea-skeleton" id="linea-sk-1"></div>
-                        <div class="linea-skeleton" id="linea-sk-2"></div>
-                        <div class="linea-skeleton" id="linea-sk-3"></div>
-                    </div>
-                </div>
             </div>
-        
+
+            
             <div class="seccion" id="transacciones">
                 <h2 class="titulo-seccion">Últimas Transacciones</h2>
                 <div id="contenedor-tabla">
@@ -103,7 +105,7 @@
                 <button class="boton-accion" id="btn-imprimir-transacciones">Imprimir</button>
             </div>
 
-
+            
             <div class="seccion" id="consignar">
                 <h2 class="titulo-seccion">Consignación electrónica</h2>
                 <div class="tarjeta-dato">
@@ -117,8 +119,35 @@
                 <label class="label-campo" for="monto-consignar">Monto</label>
                 <input class="campo-input" type="number" id="monto-consignar" placeholder="Ej: 50000" min="0">
                 <button class="boton-accion" id="btn-hacer-consignar">Consignar</button>
+
+                
+                <div class="resumen-transaccion" id="resumen-consignar">
+                    <h3 class="titulo-resumen-transaccion">Resumen de la consignación</h3>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Fecha</p>
+                        <p class="valor-dato" id="res-fecha-consignar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Referencia</p>
+                        <p class="valor-dato" id="res-referencia-consignar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Tipo</p>
+                        <p class="valor-dato" id="res-tipo-consignar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Descripción</p>
+                        <p class="valor-dato" id="res-descripcion-consignar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Valor</p>
+                        <p class="valor-dato" id="res-valor-consignar">—</p>
+                    </div>
+                    <button class="boton-accion" id="btn-imprimir-consignar">Imprimir</button>
+                </div>
             </div>
 
+            
             <div class="seccion" id="retirar">
                 <h2 class="titulo-seccion">Retiro de dinero</h2>
                 <div class="tarjeta-dato">
@@ -132,9 +161,35 @@
                 <label class="label-campo" for="monto-retirar">Monto</label>
                 <input class="campo-input" type="number" id="monto-retirar" placeholder="Ej: 20000" min="0">
                 <button class="boton-accion" id="btn-hacer-retirar">Retirar</button>
+
+                
+                <div class="resumen-transaccion" id="resumen-retirar">
+                    <h3 class="titulo-resumen-transaccion">Resumen del retiro</h3>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Fecha</p>
+                        <p class="valor-dato" id="res-fecha-retirar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Referencia</p>
+                        <p class="valor-dato" id="res-referencia-retirar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Tipo</p>
+                        <p class="valor-dato" id="res-tipo-retirar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Descripción</p>
+                        <p class="valor-dato" id="res-descripcion-retirar">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Valor</p>
+                        <p class="valor-dato" id="res-valor-retirar">—</p>
+                    </div>
+                    <button class="boton-accion" id="btn-imprimir-retirar">Imprimir</button>
+                </div>
             </div>
 
-
+            
             <div class="seccion" id="servicio">
                 <h2 class="titulo-seccion">Pago de servicios públicos</h2>
                 <div class="tarjeta-dato">
@@ -148,27 +203,83 @@
                 <label class="label-campo" for="tipo-servicio">Servicio</label>
                 <select class="campo-select" id="tipo-servicio">
                     <option value="">Seleccione un servicio</option>
-                    <option value="energia">Energía</option>
-                    <option value="agua">Agua</option>
-                    <option value="gas">Gas</option>
-                    <option value="internet">Internet</option>
+                    <option value="Energía">Energía</option>
+                    <option value="Agua">Agua</option>
+                    <option value="Gas natural">Gas natural</option>
+                    <option value="Internet">Internet</option>
                 </select>
                 <label class="label-campo" for="referencia-servicio">Referencia</label>
                 <input class="campo-input" type="text" id="referencia-servicio" placeholder="Número de referencia">
                 <label class="label-campo" for="valor-servicio">Valor</label>
                 <input class="campo-input" type="number" id="valor-servicio" placeholder="Ej: 80000" min="0">
                 <button class="boton-accion" id="btn-pagar-servicio">Pagar</button>
+
+                
+                <div class="resumen-transaccion" id="resumen-servicio">
+                    <h3 class="titulo-resumen-transaccion">Resumen del pago</h3>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Fecha</p>
+                        <p class="valor-dato" id="res-fecha-servicio">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Referencia</p>
+                        <p class="valor-dato" id="res-referencia-servicio">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Tipo</p>
+                        <p class="valor-dato" id="res-tipo-servicio">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Descripción</p>
+                        <p class="valor-dato" id="res-descripcion-servicio">—</p>
+                    </div>
+                    <div class="fila-resumen-transaccion">
+                        <p class="label-dato">Valor</p>
+                        <p class="valor-dato" id="res-valor-servicio">—</p>
+                    </div>
+                    <button class="boton-accion" id="btn-imprimir-servicio">Imprimir</button>
+                </div>
             </div>
 
-
+            
             <div class="seccion" id="certificado">
-                <h2 class="titulo-seccion">Certificado Bancario</h2>
-                <p class="texto-seccion">Este usuario tiene una cuenta activa en Banco Acme.</p>
-                <div class="tarjeta-dato">
-                    <p class="label-dato">Fecha de creación</p>
-                    <p class="valor-dato" id="valor-fecha-certificado">—</p>
+                <div id="contenido-certificado">
+                    <div id="cabecera-certificado">
+                        <h1 id="titulo-cert">Banco Acme</h1>
+                        <p id="subtitulo-cert">CERTIFICADO BANCARIO</p>
+                    </div>
+
+                    <div id="cuerpo-certificado">
+                        <p class="texto-cert">El Banco Acme certifica que el/la señor(a):</p>
+                        <p class="valor-cert-grande" id="cert-nombre-usuario">—</p>
+
+                        <p class="texto-cert">identificado(a) con documento número:</p>
+                        <p class="valor-cert-grande" id="cert-cedula-usuario">—</p>
+
+                        <p class="texto-cert">
+                            es titular de una cuenta bancaria activa en nuestra institución,
+                            con número de cuenta:
+                        </p>
+                        <p class="valor-cert-grande" id="cert-numero-cuenta">—</p>
+
+                        <p class="texto-cert">
+                            La cuenta fue creada el día:
+                        </p>
+                        <p class="valor-cert-grande" id="cert-fecha-creacion">—</p>
+
+                        <p class="texto-cert">
+                            Este certificado se expide a solicitud del interesado y tiene validez
+                            como documento oficial de Banco Acme.
+                        </p>
+                    </div>
+
+                    <div id="pie-certificado">
+                        <p id="cert-fecha-expedicion">Fecha de expedición: —</p>
+                        <p id="cert-firma">Banco Acme S.A.</p>
+                    </div>
                 </div>
-                <button class="boton-accion" id="btn-imprimir-certificado">Imprimir</button>
+
+                <button class="boton-accion" id="btn-imprimir-certificado">Imprimir certificado</button>
             </div>
 
         </div>

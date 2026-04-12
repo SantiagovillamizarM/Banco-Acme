@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #080810;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    background-image:
+        radial-gradient(ellipse 500px 400px at 15% 60%, rgba(255, 255, 255, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 80% 20%, rgba(255, 255, 255, 0.5) 0%, transparent 65%),
+        radial-gradient(ellipse 300px 250px at 70% 75%, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    width: 900px;
+    height: 180px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    top: 35%;
+    left: -15%;
+    transform: rotate(-18deg);
+    filter: blur(2px);
+}
+
+body::after {
+    width: 700px;
+    height: 140px;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    top: 42%;
+    right: -10%;
+    transform: rotate(12deg);
+    filter: blur(2px);
+}
+
+
+#todo-recuperar {
+    background-color: #000000;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    border-radius: 24px;
+    padding: 56px 72px 64px 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 560px;
+    position: relative;
+    z-index: 1;
+}
+
+
+#titulo-recuperar {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+
+#form-recuperar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+#form-recuperar label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 8px;
+}
+
+#form-recuperar input {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#form-recuperar input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#form-recuperar input:focus {
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+
+#boton-recuperar {
+    margin-top: 16px;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ffffff 0%, #000000 100%);
+    color: #ffffff;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+#boton-recuperar:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+
+#mensaje-error-recuperar {
+    color: red;
+    font-size: 0.85rem;
+    display: none;
+    text-align: center;
+}
+
+
+#volver-recuperar {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.85rem;
+    text-decoration: none;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+}
+
+#volver-recuperar:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+@media (max-width: 600px) {
+    #todo-recuperar {
+        padding: 40px 28px 52px 28px;
+        border-radius: 18px;
+        max-width: 90vw;
+    }
+
+    #titulo-recuperar {
+        font-size: 3.2rem;
+    }
+}

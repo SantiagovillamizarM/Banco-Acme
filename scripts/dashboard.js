@@ -1,16 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // --- 1. GUARDIA DE SESIÓN ---
+  
   var nombreLogueado = sessionStorage.getItem("usuarioLogueado");
   if (!nombreLogueado) {
     window.location.href = "formulario-de-acceso.html";
     return;
   }
 
-  // --- 2. BUSCAR USUARIO COMPLETO EN localStorage ---
-  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   var usuario = null;
 
+  
+  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   for (var i = 0; i < usuarios.length; i++) {
     if (usuarios[i].primerNombre === nombreLogueado) {
       usuario = usuarios[i];
@@ -18,14 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Si no se encontró en localStorage, buscamos en el JSON del admin
+  
   if (!usuario) {
     fetch("../datos-admin.json")
       .then(function (res) { return res.json(); })
       .then(function (datos) {
         for (var i = 0; i < datos.usuarios.length; i++) {
-          if ((datos.usuarios[i].primerNombre || datos.usuarios[i].nombre) === nombreLogueado) {
-            usuario = datos.usuarios[i];
+          var u = datos.usuarios[i];
+          if ((u.primerNombre || u.nombre) === nombreLogueado) {
+            usuario = u;
             break;
           }
         }
@@ -38,22 +39,28 @@ document.addEventListener("DOMContentLoaded", function () {
     iniciarDashboard();
   }
 
-  // --- 3. FUNCIÓN PRINCIPAL ---
+
   function iniciarDashboard() {
 
-    // Generar número de cuenta si no tiene uno
+    
     if (usuario && !usuario.numeroCuenta) {
       usuario.numeroCuenta = "AC-" + Math.floor(1000000000 + Math.random() * 9000000000);
       guardarUsuario();
     }
 
-    // Generar fecha de creación si no tiene
+    
     if (usuario && !usuario.fechaCreacion) {
       usuario.fechaCreacion = new Date().toLocaleDateString("es-CO");
       guardarUsuario();
     }
 
-    // Crear lista de transacciones si no existe
+    
+    if (usuario && usuario.saldo === undefined) {
+      usuario.saldo = 0;
+      guardarUsuario();
+    }
+
+    
     if (usuario && !usuario.transacciones) {
       usuario.transacciones = [];
       guardarUsuario();
@@ -66,11 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
     marcarActivo("btn-resumen");
   }
 
-  // --- 4. GUARDAR USUARIO EN localStorage ---
+
   function guardarUsuario() {
     var todosLosUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     for (var i = 0; i < todosLosUsuarios.length; i++) {
-      if (todosLosUsuarios[i].cedula === usuario.cedula) {
+      if (String(todosLosUsuarios[i].cedula) === String(usuario.cedula)) {
         todosLosUsuarios[i] = usuario;
         localStorage.setItem("usuarios", JSON.stringify(todosLosUsuarios));
         return;
@@ -78,37 +85,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // --- 5. CARGAR DATOS DEL USUARIO EN LA PANTALLA ---
+
   function cargarDatosEnPantalla() {
     if (!usuario) return;
 
-    var nombre = usuario.primerNombre + " " + usuario.apellidos;
+    var nombreCompleto = usuario.primerNombre + " " + usuario.apellidos;
 
-    // Resumen
+    
     document.getElementById("valor-numero-cuenta").textContent = usuario.numeroCuenta;
     document.getElementById("valor-saldo").textContent = formatearDinero(usuario.saldo || 0);
     document.getElementById("valor-estado").textContent = "Activa";
     document.getElementById("valor-fecha-creacion").textContent = usuario.fechaCreacion;
 
-    // Consignar
+    
     document.getElementById("valor-cuenta-consignar").textContent = usuario.numeroCuenta;
-    document.getElementById("valor-nombre-consignar").textContent = nombre;
+    document.getElementById("valor-nombre-consignar").textContent = nombreCompleto;
 
-    // Retirar
+    
     document.getElementById("valor-cuenta-retirar").textContent = usuario.numeroCuenta;
-    document.getElementById("valor-nombre-retirar").textContent = nombre;
+    document.getElementById("valor-nombre-retirar").textContent = nombreCompleto;
 
-    // Servicios
+    
     document.getElementById("valor-cuenta-servicio").textContent = usuario.numeroCuenta;
-    document.getElementById("valor-nombre-servicio").textContent = nombre;
+    document.getElementById("valor-nombre-servicio").textContent = nombreCompleto;
 
-    // Certificado
-    document.getElementById("valor-fecha-certificado").textContent = usuario.fechaCreacion;
+    
+    document.getElementById("cert-nombre-usuario").textContent = nombreCompleto;
+    document.getElementById("cert-cedula-usuario").textContent = usuario.cedula;
+    document.getElementById("cert-numero-cuenta").textContent = usuario.numeroCuenta;
+    document.getElementById("cert-fecha-creacion").textContent = usuario.fechaCreacion;
+    document.getElementById("cert-fecha-expedicion").textContent = "Fecha de expedición: " + new Date().toLocaleDateString("es-CO");
 
     cargarTablaTransacciones();
   }
 
-  // --- 6. CARGAR TABLA DE TRANSACCIONES ---
+
   function cargarTablaTransacciones() {
     var cuerpo = document.getElementById("cuerpo-transacciones");
     cuerpo.innerHTML = "";
@@ -116,17 +127,17 @@ document.addEventListener("DOMContentLoaded", function () {
     var transacciones = (usuario && usuario.transacciones) ? usuario.transacciones : [];
 
     if (transacciones.length === 0) {
-      var fila = document.createElement("tr");
-      fila.innerHTML = "<td colspan='5' style='text-align:center; color: rgba(255,255,255,0.3); padding: 24px;'>No hay transacciones registradas</td>";
-      cuerpo.appendChild(fila);
+      var filaVacia = document.createElement("tr");
+      filaVacia.innerHTML = "<td colspan='5' style='text-align:center; color: rgba(255,255,255,0.3); padding: 24px;'>No hay transacciones registradas</td>";
+      cuerpo.appendChild(filaVacia);
       return;
     }
 
-    // Mostrar las más recientes primero
-    var copia = transacciones.slice().reverse();
+    
+    var ultimas = transacciones.slice().reverse().slice(0, 10);
 
-    for (var i = 0; i < copia.length; i++) {
-      var t = copia[i];
+    for (var i = 0; i < ultimas.length; i++) {
+      var t = ultimas[i];
       var fila = document.createElement("tr");
       var colorValor = t.tipo === "Consignación" ? "rgba(100,255,150,0.85)" : "rgba(255,120,120,0.85)";
       var signo = t.tipo === "Consignación" ? "+" : "-";
@@ -142,10 +153,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // --- 7. NAVEGACIÓN DEL MENÚ ---
+
   function configurarMenu() {
     var botones = [
-      { id: "btn-resumen",     seccion: "resumenCuenta" },
+      { id: "btn-resumen",     seccion: "transacciones" },
       { id: "btn-consignar",   seccion: "consignar" },
       { id: "btn-retirar",     seccion: "retirar" },
       { id: "btn-servicios",   seccion: "servicio" },
@@ -164,14 +175,14 @@ document.addEventListener("DOMContentLoaded", function () {
       })(botones[i]);
     }
 
-    // Cerrar sesión
+    
     document.getElementById("btn-cerrar-sesion").addEventListener("click", function () {
       sessionStorage.removeItem("usuarioLogueado");
       window.location.href = "formulario-de-acceso.html";
     });
   }
 
-  // Muestra solo la sección indicada y oculta las demás
+
   function mostrarSeccion(idSeccion) {
     var secciones = document.querySelectorAll(".seccion");
     for (var i = 0; i < secciones.length; i++) {
@@ -181,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (seccionActiva) seccionActiva.classList.add("visible");
   }
 
-  // Resalta el botón activo en el menú
+
   function marcarActivo(idBoton) {
     var botones = document.querySelectorAll(".boton-menu");
     for (var i = 0; i < botones.length; i++) {
@@ -191,25 +202,27 @@ document.addEventListener("DOMContentLoaded", function () {
     if (botonActivo) botonActivo.classList.add("activo");
   }
 
-  // --- 8. BOTONES DE OPERACIONES ---
+
   function configurarBotones() {
 
-    // CONSIGNAR
+    
     document.getElementById("btn-hacer-consignar").addEventListener("click", function () {
       var monto = parseFloat(document.getElementById("monto-consignar").value);
       if (!monto || monto <= 0) {
         alert("Ingresa un monto válido.");
         return;
       }
+
       usuario.saldo = (usuario.saldo || 0) + monto;
-      registrarTransaccion("Consignación", "Consignación electrónica", monto);
+      var transaccion = registrarTransaccion("Consignación", "Consignación por canal electrónico", monto);
       guardarUsuario();
+
       document.getElementById("monto-consignar").value = "";
       cargarDatosEnPantalla();
-      alert("Consignación exitosa por " + formatearDinero(monto));
+      mostrarResumenTransaccion("consignar", transaccion);
     });
 
-    // RETIRAR
+    
     document.getElementById("btn-hacer-retirar").addEventListener("click", function () {
       var monto = parseFloat(document.getElementById("monto-retirar").value);
       if (!monto || monto <= 0) {
@@ -220,15 +233,17 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Saldo insuficiente.");
         return;
       }
+
       usuario.saldo = (usuario.saldo || 0) - monto;
-      registrarTransaccion("Retiro", "Retiro de dinero", monto);
+      var transaccion = registrarTransaccion("Retiro", "Retiro de dinero", monto);
       guardarUsuario();
+
       document.getElementById("monto-retirar").value = "";
       cargarDatosEnPantalla();
-      alert("Retiro exitoso por " + formatearDinero(monto));
+      mostrarResumenTransaccion("retirar", transaccion);
     });
 
-    // PAGAR SERVICIO
+    
     document.getElementById("btn-pagar-servicio").addEventListener("click", function () {
       var servicio = document.getElementById("tipo-servicio").value;
       var referencia = document.getElementById("referencia-servicio").value.trim();
@@ -242,28 +257,56 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Saldo insuficiente.");
         return;
       }
+
       usuario.saldo = (usuario.saldo || 0) - valor;
-      registrarTransaccion("Servicio", "Pago " + servicio + " - Ref: " + referencia, valor);
+      var transaccion = registrarTransaccion("Retiro", "Pago de servicio público " + servicio, valor);
       guardarUsuario();
+
       document.getElementById("tipo-servicio").value = "";
       document.getElementById("referencia-servicio").value = "";
       document.getElementById("valor-servicio").value = "";
       cargarDatosEnPantalla();
-      alert("Pago de " + servicio + " exitoso por " + formatearDinero(valor));
+      mostrarResumenTransaccion("servicio", transaccion);
     });
 
-    // IMPRIMIR TRANSACCIONES
+    
     document.getElementById("btn-imprimir-transacciones").addEventListener("click", function () {
       window.print();
     });
 
-    // IMPRIMIR CERTIFICADO
+    
+    document.getElementById("btn-imprimir-consignar").addEventListener("click", function () {
+      window.print();
+    });
+
+    
+    document.getElementById("btn-imprimir-retirar").addEventListener("click", function () {
+      window.print();
+    });
+
+    
+    document.getElementById("btn-imprimir-servicio").addEventListener("click", function () {
+      window.print();
+    });
+
+    
     document.getElementById("btn-imprimir-certificado").addEventListener("click", function () {
       window.print();
     });
   }
 
-  // --- 9. REGISTRAR UNA TRANSACCIÓN ---
+
+  function mostrarResumenTransaccion(tipo, transaccion) {
+    var resumen = document.getElementById("resumen-" + tipo);
+    document.getElementById("res-fecha-" + tipo).textContent = transaccion.fecha;
+    document.getElementById("res-referencia-" + tipo).textContent = transaccion.referencia;
+    document.getElementById("res-tipo-" + tipo).textContent = transaccion.tipo;
+    document.getElementById("res-descripcion-" + tipo).textContent = transaccion.descripcion;
+    document.getElementById("res-valor-" + tipo).textContent = formatearDinero(transaccion.valor);
+    resumen.classList.add("visible-resumen");
+  }
+
+
   function registrarTransaccion(tipo, descripcion, valor) {
     var nueva = {
       fecha: new Date().toLocaleDateString("es-CO"),
@@ -273,9 +316,10 @@ document.addEventListener("DOMContentLoaded", function () {
       valor: valor
     };
     usuario.transacciones.push(nueva);
+    return nueva;
   }
 
-  // --- 10. FORMATEAR DINERO ---
+
   function formatearDinero(valor) {
     return "$ " + valor.toLocaleString("es-CO");
   }

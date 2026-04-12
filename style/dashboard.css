@@ -200,7 +200,6 @@ body {
     font-size: 0.8rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.45);
-    text-transform: none;
 }
 
 .valor-resumen {
@@ -213,42 +212,6 @@ body {
     font-size: 1.25rem;
     letter-spacing: 0.02em;
 }
-
-#tarjeta-transacciones-resumen {
-    background-color: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 18px;
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-#barra-skeleton {
-    height: 14px;
-    width: 140px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-}
-
-#bloque-skeleton {
-    background-color: #000000;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.linea-skeleton {
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 5px;
-}
-
-#linea-sk-1 { width: 100%; }
-#linea-sk-2 { width: 75%; }
-#linea-sk-3 { width: 48%; }
 
 .tarjeta-dato {
     background-color: #000000;
@@ -308,13 +271,6 @@ body {
     color: rgba(255, 255, 255, 0.22);
 }
 
-.campo-select {
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 18px;
-    cursor: pointer;
-}
-
 .campo-select option {
     background-color: #000000;
     color: #ffffff;
@@ -324,7 +280,6 @@ body {
 .campo-input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-
 
 
 #contenedor-tabla {
@@ -388,4 +343,118 @@ body {
 
 .boton-accion:active {
     transform: translateY(0);
+}
+
+
+/* Resumen de transaccion individual */
+.resumen-transaccion {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-top: 8px;
+}
+
+.resumen-transaccion.visible-resumen {
+    display: flex;
+}
+
+.titulo-resumen-transaccion {
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.fila-resumen-transaccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.fila-resumen-transaccion:last-of-type {
+    border-bottom: none;
+}
+
+
+/* Certificado bancario */
+#contenido-certificado {
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 48px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+#cabecera-certificado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#titulo-cert {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+#subtitulo-cert {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.15em;
+}
+
+#cuerpo-certificado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.texto-cert {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.valor-cert-grande {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    margin-bottom: 6px;
+}
+
+#pie-certificado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#cert-fecha-expedicion {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#cert-firma {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.05em;
 }

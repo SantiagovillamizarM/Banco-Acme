@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Si no hay una cédula guardada, no debería estar aquí
   var cedula = localStorage.getItem("recuperar-cedula");
   if (!cedula) {
     window.location.href = "contra_olvidada.html";
@@ -8,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var formulario = document.getElementById("form-nueva-contrasena");
-  var mensaje = document.getElementById("mensaje-error-loginR");
+  var mensaje = document.getElementById("mensaje-error-recuperar");
 
   formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
@@ -28,10 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Actualizar la contraseña del usuario en localStorage
     var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     for (var i = 0; i < usuarios.length; i++) {
-      if (usuarios[i].cedula === cedula) {
+      if (String(usuarios[i].cedula) === String(cedula)) {
         usuarios[i].contrasena = nueva;
         break;
       }

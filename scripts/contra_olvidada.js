@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   var formulario = document.getElementById("form-recuperar");
-  var mensaje = document.getElementById("mensaje-error-loginR");
+  var mensaje = document.getElementById("mensaje-error-recuperar");
 
   formulario.addEventListener("submit", function (evento) {
     evento.preventDefault();
@@ -9,26 +9,27 @@ document.addEventListener("DOMContentLoaded", function () {
     var cedula = document.getElementById("cedula-recuperar").value.trim();
     var correo = document.getElementById("correo-recuperar").value.trim();
 
-    // Buscar el usuario en localStorage
     var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     var usuarioEncontrado = null;
 
     for (var i = 0; i < usuarios.length; i++) {
-      if (usuarios[i].cedula === cedula && usuarios[i].correo === correo) {
+      
+      if (String(usuarios[i].cedula) === String(cedula) && usuarios[i].correo === correo) {
         usuarioEncontrado = usuarios[i];
         break;
       }
     }
 
     if (!usuarioEncontrado) {
-      mensaje.textContent = "No encontramos una cuenta con esos datos.";
+      mensaje.textContent = "Usuario inexistente o datos incorrectos.";
       mensaje.style.display = "block";
       return;
     }
 
-    // Guardar temporalmente qué usuario va a cambiar su contraseña
+    mensaje.style.display = "none";
     localStorage.setItem("recuperar-cedula", cedula);
-    window.location.href = "contrasena_olvidada2.html";
+    window.location.href = "contraseña_olvidada2.html";
+
   });
 
 });
