@@ -20,36 +20,62 @@
 
 <body>
 
-    <!--Div que contiene todo para poder modificar las cosasmas facilmente-->
+    <!--Div que contiene todo para poder modificar las cosasmas facilmente con el ID asignado de "todo-loginR" (loginR era el antiguo nombre de este archivo)-->
     <div id="todo-loginR">
+
+        <!--h1 con el nombre de la empresa con el ID asignado de "titulo-logionR"-->
         <h1 id="titulo-loginR">Acme</h1>
+
+        <!--form con el ID asignado de "form-loginR"-->
         <form id="form-loginR">
+
+            <!--label para el tipo de documento con el ID asignado de "label-loginR"-->
             <label for="tipoDoc" id="label-loginR">Tipo de identificación</label>
 
+
+            <!--seleccion multiple para el tipo de documento del tipo requires-->
             <select id="seleccion-loginR" name="tipoDoc" required>
                 <option value="" id="valor1-loginR">Seleccione una opción</option>
+
+                <!--opcion con el CC (Cedula ciudadana) con el ID asignado de "valor2-loginR"-->
                 <option value="CC" id="valor2-loginR">Cédula de ciudadanía</option>
+
+                <!--opcion para la TI (tarjeta de identidad) con el ID asignado de "valor3-loginR"-->
                 <option value="TI" id="valor3-loginR">Tarjeta de identidad</option>
             </select>
 
+
+            <!--label para el documento con el ID asignado de "documento-loginR"-->
             <label for="Document" id="documento-loginR">Documento</label>
+
+            <!--input para ingresar esos datos del tipo numero con el ID asignado de "cedula-loginR" del tipo required-->
             <input type="number" id="cedula-loginR" name="cedula" placeholder="Ej: 1.234.567 o 1234567" pattern="[0-9.]+"  title="Solo números y puntos" minlength="6" maxlength="12"  required>
 
+
+            <!--label para el correo con el ID asignado de "correo-text-loginR"-->
             <label for="correo" id="correo-text-loginR">Correo electrónico</label>
+
+            <!--input para el correo del tipo email con el ID asignado de "correo-loginR" del tipo required-->
             <input type="email" id="correo-loginR" name="correo" placeholder="ejemplo@correo.com" required>
 
+
+            <!--label para la contraseña con el ID asignado de "password-loginR"-->
             <label for="Password" id="password-loginR">Contraseña</label>
+
+            <!--input del tipo password con el ID asignado de "contraseña-loginR"-->
             <input type="password" id="contraseña-loginR" required placeholder="Ingrese su contraseña">
 
-           
+            
+            <!--boton para subir todo lo registrado con el ID asignado de "boton-submit-loginR"-->
             <button type="submit" id="boton-submit-loginR">Iniciar sesión</button>
 
+
+            <!--p con el ID asignado de "mensaje-error-loginR"-->
             <p id="mensaje-error-loginR"></p>
                
+            <!--a con el link para el apartado de "olvidaste tu contraseña" con el ID asignado de "hipervinculo-loginR"-->
             <a href="contra_olvidada.html" id="hipervinculo-loginR">¿Olvidaste tu contraseña?</a>
         </form>
-    </div>
-
-    
+    </div>    
 </body>
 </html>
