@@ -22,6 +22,8 @@ body {
 }
 
 
+/* ── Contenedor principal ── */
+
 #fondo-dashboard {
     width: 96vw;
     height: 90vh;
@@ -32,13 +34,14 @@ body {
     border: 1px solid rgb(255, 255, 255);
 }
 
-
 #dashboard {
     display: flex;
     width: 100%;
     height: 100%;
 }
 
+
+/* ── Panel izquierdo (sidebar) ── */
 
 #panel-izquierdo {
     width: 280px;
@@ -67,6 +70,8 @@ body {
     flex: 1;
 }
 
+
+/* ── Botones del menú ── */
 
 .boton-menu {
     background: transparent;
@@ -106,6 +111,8 @@ body {
 }
 
 
+/* ── Cerrar sesión ── */
+
 #zona-cerrar-sesion {
     margin-top: auto;
     padding-top: 16px;
@@ -127,6 +134,8 @@ body {
 }
 
 
+/* ── Panel derecho (contenido) ── */
+
 #panel-derecho {
     flex: 1;
     padding: 36px 40px;
@@ -138,10 +147,14 @@ body {
 #panel-derecho::-webkit-scrollbar {
     width: 5px;
 }
+
 #panel-derecho::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
 }
+
+
+/* ── Secciones ── */
 
 .seccion {
     display: none;
@@ -167,6 +180,9 @@ body {
     line-height: 1.6;
 }
 
+
+/* ── Tarjeta resumen ── */
+
 #tarjeta-resumen {
     background-color: #000000;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -188,6 +204,7 @@ body {
 #fila-datos-resumen {
     display: flex;
     gap: 48px;
+    flex-wrap: wrap;
 }
 
 .columna-resumen {
@@ -213,6 +230,9 @@ body {
     letter-spacing: 0.02em;
 }
 
+
+/* ── Tarjeta dato ── */
+
 .tarjeta-dato {
     background-color: #000000;
     border: 1px solid rgba(255, 250, 250, 0.09);
@@ -221,6 +241,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .label-dato {
@@ -237,6 +259,8 @@ body {
     color: #ffffff;
 }
 
+
+/* ── Campos de formulario ── */
 
 .label-campo {
     font-size: 0.85rem;
@@ -282,16 +306,20 @@ body {
 }
 
 
+/* ── Tabla transacciones ── */
+
 #contenedor-tabla {
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.09);
     overflow: hidden;
+    overflow-x: auto;
 }
 
 #tabla-transacciones {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.88rem;
+    min-width: 500px;
 }
 
 #tabla-transacciones th {
@@ -321,6 +349,8 @@ body {
 }
 
 
+/* ── Botón acción ── */
+
 .boton-accion {
     align-self: flex-start;
     padding: 12px 32px;
@@ -346,7 +376,8 @@ body {
 }
 
 
-/* Resumen de transaccion individual */
+/* ── Resumen de transacción ── */
+
 .resumen-transaccion {
     display: none;
     flex-direction: column;
@@ -377,6 +408,8 @@ body {
     align-items: center;
     padding: 6px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .fila-resumen-transaccion:last-of-type {
@@ -384,7 +417,8 @@ body {
 }
 
 
-/* Certificado bancario */
+/* ── Certificado bancario ── */
+
 #contenido-certificado {
     background-color: #000000;
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -445,6 +479,8 @@ body {
     align-items: center;
     padding-top: 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 #cert-fecha-expedicion {
@@ -457,4 +493,200 @@ body {
     font-weight: 700;
     color: rgba(255, 255, 255, 0.65);
     letter-spacing: 0.05em;
+}
+
+
+/* ════════════════════════════════
+   RESPONSIVE — Tablet (≤ 900px)
+   ════════════════════════════════ */
+
+@media (max-width: 900px) {
+
+    body {
+        align-items: flex-start;
+        height: 100svh;
+        overflow: hidden;
+    }
+
+    #fondo-dashboard {
+        width: 100vw;
+        height: 100svh;
+        border-radius: 0;
+        border: none;
+        flex-direction: column;
+    }
+
+    #dashboard {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    /* Sidebar se convierte en barra superior compacta */
+    #panel-izquierdo {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 16px 20px 12px 20px;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        flex-shrink: 0;
+    }
+
+    #titulo-dashboard {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+        padding-left: 0;
+        margin-right: auto;
+        flex-shrink: 0;
+    }
+
+    #nav-dashboard {
+        flex-direction: row;
+        flex: unset;
+        gap: 2px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 0 8px;
+    }
+
+    #nav-dashboard::-webkit-scrollbar {
+        display: none;
+    }
+
+    .boton-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 10px;
+        font-size: 0.7rem;
+        border-radius: 8px;
+        white-space: nowrap;
+        width: auto;
+        min-width: 60px;
+    }
+
+    .icono-menu {
+        font-size: 1.1rem;
+        width: auto;
+    }
+
+    #zona-cerrar-sesion {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.07);
+        padding-left: 10px;
+        margin-left: 8px;
+        flex-shrink: 0;
+    }
+
+    #btn-cerrar-sesion {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 8px 10px;
+        font-size: 0.7rem;
+        width: auto;
+        min-width: 60px;
+    }
+
+    #panel-derecho {
+        flex: 1;
+        padding: 24px 20px;
+        overflow-y: auto;
+    }
+
+    #tarjeta-resumen {
+        padding: 20px 20px;
+    }
+
+    #fila-datos-resumen {
+        gap: 24px;
+    }
+
+    .campo-input,
+    .campo-select {
+        max-width: 100%;
+    }
+
+    #contenido-certificado {
+        padding: 28px 24px;
+    }
+}
+
+
+/* ════════════════════════════════
+   RESPONSIVE — Móvil (≤ 560px)
+   ════════════════════════════════ */
+
+@media (max-width: 560px) {
+
+    /* Barra superior aún más compacta — solo íconos */
+    #titulo-dashboard {
+        font-size: 1.2rem;
+    }
+
+    .boton-menu {
+        min-width: 48px;
+        padding: 7px 8px;
+        font-size: 0;
+        /* Oculta el texto, deja solo el ícono */
+    }
+
+    .icono-menu {
+        font-size: 1.2rem;
+    }
+
+    #btn-cerrar-sesion {
+        font-size: 0;
+        min-width: 48px;
+        padding: 7px 8px;
+    }
+
+    #panel-derecho {
+        padding: 16px 14px;
+    }
+
+    .titulo-seccion {
+        font-size: 1.15rem;
+    }
+
+    #tarjeta-resumen {
+        padding: 16px 16px;
+        border-radius: 12px;
+    }
+
+    #fila-datos-resumen {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .tarjeta-dato {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 14px 16px;
+    }
+
+    .resumen-transaccion {
+        padding: 18px 16px;
+    }
+
+    #contenido-certificado {
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    #titulo-cert {
+        font-size: 1.4rem;
+    }
+
+    .boton-accion {
+        width: 100%;
+        text-align: center;
+        padding: 13px 0;
+    }
 }

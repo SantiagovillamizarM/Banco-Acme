@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     localStorage.setItem("registro-temp", JSON.stringify({ tipoDoc: tipoDoc, cedula: cedula }));
     window.location.href = "Register_fase2.html";
-
+    
   });
 
 });
